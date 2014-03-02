@@ -1,6 +1,8 @@
 package Toy;
 use strict;
 use warnings;
+our $VERSION = '0.01';
+
 use Toy::Box::Free;
 use Toy::Box::Tiqav;
 use Toy::Box::Lgtm;
