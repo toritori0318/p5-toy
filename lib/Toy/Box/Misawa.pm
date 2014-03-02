@@ -25,7 +25,7 @@ sub get {
             $image_link = $1;
         }
         push @rows, {
-            url => $url,
+            site_link  => $url,
             image_link => $image_link,
         };
     }
