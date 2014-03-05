@@ -19,6 +19,9 @@ p $toy->misawa->pick;
 # mstr
 p $toy->mstr->pick;
 
+# tumblr
+p $toy->tumblr->pick('dog');
+
 # free
 my $free_a = Toy::Box::Free->new([qw/hoge fuga piyo/]);
 p $free_a->pick;
