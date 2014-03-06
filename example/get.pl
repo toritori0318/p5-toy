@@ -27,3 +27,17 @@ my $free_a = Toy::Box::Free->new([qw/hoge fuga piyo/]);
 p $free_a->pick;
 my $free_b = Toy::Box::Free->new([qw/foo bar baz/]);
 p $free_b->pick;
+
+# ranking
+# toritsuyo
+my $message = 'toritsuyo++';
+p $toy->ranking->calc($message);
+p $toy->ranking->calc($message);
+p $toy->ranking->calc($message);
+$message = 'toritsuyo--';
+p $toy->ranking->calc($message);
+# bucho
+$message = 'bucho++';
+p $toy->ranking->calc($message);
+# get
+p $toy->ranking->get_userranking();

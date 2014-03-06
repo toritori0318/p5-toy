@@ -11,6 +11,7 @@ WriteMakefile(
         'JSON'            => '0',
         'URI'             => '0',
         'URI::Escape'     => '0',
+        'Redis'           => '0',
     },
     MIN_PERL_VERSION => '5.008001',
     LICENSE => 'perl',
