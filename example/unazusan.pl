@@ -8,6 +8,7 @@
 #   @unazusan misawa
 #   @unazusan mstr
 #   @unazusan tmublr <word>
+#   @unazusan ranking
 #
 ####################################
 use 5.010;
@@ -26,6 +27,7 @@ my @commands = qw/
     misawa
     mstr
     tmublr
+    ranking
 /;
 my $free_unazukun = Toy::Box::Free->new(
     [qw/
@@ -67,8 +69,11 @@ $unazu_san->on_message(
     qr/(.)/ => sub {
         my ($receive, $match) = @_;
         # 全てのワードにマッチする処理
-        #say $match;
-        #say $receive->message;
+
+        # ユーザ名++ の計算
+        my $result = $toy->ranking->calc($receive->message);
+        $receive->reply(sprintf("%s (score:%d)", $result->{uid}, $result->{score}))
+            if $result;
     },
 );
 # help
@@ -78,7 +83,7 @@ $unazu_san->on_command(
         my $cmd = $args[0] || '';
         unless($cmd) {
             $receive->reply('help:');
-            $receive->reply(' @unazusan jojo / tiqav / lgtm / misawa / mstr / tumblr');
+            $receive->reply(' @unazusan jojo / tiqav / lgtm / misawa / mstr / tumblr / ranking');
         }
     }
 );
@@ -124,6 +129,20 @@ $unazu_san->on_command(
         my ($receive, @args) = @_;
         my $data = $toy->tumblr->pick($args[0]||'');
         $receive->reply($data->{image_link} .' '. $data->{site_link});
+    }
+);
+# ranking
+$unazu_san->on_command(
+    ranking => sub {
+        my ($receive, @args) = @_;
+        my $data = $toy->ranking->get_userranking();
+        $receive->reply('- user ranking');
+        for my $i (0..4) {
+            my $row = $data->[$i];
+            last unless $row;
+
+            $receive->reply(sprintf("  %d. %s(%d)", ($i+1), $row->{uid}, $row->{score}));
+        }
     }
 );
 
