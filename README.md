@@ -2,6 +2,10 @@
 
 It is a toy box for chat!
 
+# Installation
+
+    cpanm https://github.com/toritori0318/p5-toy/archive/master.tar.gz
+
 # Supported Toy Box
 
 - [tiqv (ちくわぶ画像検索)](http://tiqav.com/)
