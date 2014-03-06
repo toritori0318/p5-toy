@@ -26,6 +26,8 @@ sub get {
         if($item->get('description') =~ /src="([^"]*)"/) {
             $image_link = $1;
         }
+        next unless $image_link;
+
         push @rows, {
             site_link  => $url,
             image_link => $image_link,
@@ -36,4 +38,3 @@ sub get {
 }
 
 1;
-
