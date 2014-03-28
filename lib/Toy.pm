@@ -10,6 +10,7 @@ use Toy::Box::Misawa;
 use Toy::Box::Mstr;
 use Toy::Box::Tumblr;
 use Toy::Box::Ranking;
+use Toy::Box::Tenki;
 
 sub new {
     my $class = shift;
@@ -21,6 +22,7 @@ sub new {
         mstr   => Toy::Box::Mstr->new,
         tumblr => Toy::Box::Tumblr->new,
         ranking=> Toy::Box::Ranking->new,
+        tenki  => Toy::Box::Tenki->new,
         @_,
     }, $class;
     $self;
@@ -33,5 +35,6 @@ sub misawa { $_[0]->{misawa} }
 sub mstr   { $_[0]->{mstr} }
 sub tumblr { $_[0]->{tumblr} }
 sub ranking{ $_[0]->{ranking} }
+sub tenki  { $_[0]->{tenki} }
 
 1;
