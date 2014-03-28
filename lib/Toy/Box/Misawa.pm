@@ -19,13 +19,13 @@ sub get {
     my @rows;
     my $feed = XML::FeedPP->new($self->{rss_url});
     for my $item ($feed->get_item()) {
-        my $url = $item->link;
+        my $site_link = $item->link;
         my $image_link;
         if($item->get('content:encoded') =~ /src="([^"]*)"/) {
             $image_link = $1;
         }
         push @rows, {
-            site_link  => $url,
+            site_link  => $site_link,
             image_link => $image_link,
         };
     }
